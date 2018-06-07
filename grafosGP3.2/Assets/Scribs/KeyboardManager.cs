@@ -68,6 +68,10 @@ namespace VRKeyboard.Utils {
             prueba.GetComponent<pruebas>().InitializeH();
            
         }
+        public void pruebagit()
+        {
+
+        }
 
         public void Clear() {
             Input = "";
