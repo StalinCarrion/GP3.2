@@ -65,6 +65,7 @@ namespace VRKeyboard.Utils {
         }
         public void Enter()
         {
+           
             prueba.GetComponent<pruebas>().InitializeH();
            
         }

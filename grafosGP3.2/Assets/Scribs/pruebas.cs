@@ -19,14 +19,17 @@ public class pruebas : MonoBehaviour
     public List<Nombres> nombre = new List<Nombres>();
     public int i;
     string obtener="";
-    public IEnumerator H()
+    Coroutine cH=null;
+    
+    IEnumerator H()
     {
-        KeyboardManager objKey = new KeyboardManager();
-        string a = objKey.Input;
-        //obtener = objKey.inputText.text;
-        Debug.Log("que saca del imput: " + a);
-        string textoO = obtener;
-        Debug.Log("que obtieneEN LA CAJA :  " + textoO);    
+        Debug.Log("hi");
+        //KeyboardManager objKey = new KeyboardManager();
+        //string a = objKey.Input;
+        ////obtener = objKey.inputText.text;
+        //Debug.Log("que saca del imput: " + a);
+        string textoO = "Ecuador";
+        //Debug.Log("que obtieneEN LA CAJA :  " + textoO);    
         int nEsferas = 7;
         //link de la consulta donde se sustraen los datos
         WWW www = new WWW("http://es-la.dbpedia.org/sparql?default-graph-uri" +
@@ -97,6 +100,7 @@ public class pruebas : MonoBehaviour
         }
 
     }
+   
     Vector3 GeneratedPosition()
     {
         int x, y, z;
@@ -106,13 +110,17 @@ public class pruebas : MonoBehaviour
         return new Vector3(x, y, z);
 
     }
-    Coroutine cH;
+    
+    
     public void InitializeH()
     {
-        if (cH != null)
+        Debug.Log("que hay"+cH);
+        if (cH == null)
         {
+
             StopCoroutine(cH);
-            cH = StartCoroutine(ieH());
+            cH = StartCoroutine(H());
+            Debug.Log("que hay ahora" + cH);
         }        
     }
     public void StopH()
