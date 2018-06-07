@@ -63,11 +63,22 @@ namespace VRKeyboard.Utils {
                 return;
             }
         }
+        int b=0 ;
         public void Enter()
         {
-           
-            prueba.GetComponent<pruebas>().InitializeH();
-           
+            Debug.Log("Primer enter"+b);
+            if (b == 1)
+            {
+                prueba.GetComponent<pruebas>().StopCoroutine("H");
+                b = 0;
+                DestroyObject
+            }
+            if (b == 0)
+            {
+                prueba.GetComponent<pruebas>().StartCoroutine("H");
+                b = 1;
+            }
+ 
         }
         public void pruebagit()
         {

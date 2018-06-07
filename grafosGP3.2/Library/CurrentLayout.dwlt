@@ -40,8 +40,8 @@ MonoBehaviour:
     y: 0
     width: 245
     height: 278
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 104, y: 121}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -67,10 +67,10 @@ MonoBehaviour:
     y: 357
     width: 928
     height: 278
-  m_MinSize: {x: 202, y: 121}
-  m_MaxSize: {x: 8002, y: 4021}
+  m_MinSize: {x: 206, y: 121}
+  m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 97
+  controlID: 46
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 342}
   m_MaxSize: {x: 12008, y: 8042}
   vertical: 0
-  controlID: 34
+  controlID: 82
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 342}
   m_MaxSize: {x: 8006, y: 8042}
   vertical: 1
-  controlID: 74
+  controlID: 83
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 75
+  controlID: 84
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -276,8 +276,8 @@ MonoBehaviour:
     y: 0
     width: 683
     height: 278
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 18}
@@ -489,14 +489,14 @@ MonoBehaviour:
     height: 257
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 1332.6633070456676
+  lastFramingTime: 2979.049516776509
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 391.7, y: -5.108, z: -17.353}
+    m_Target: {x: 6.76748, y: 1.752717, z: -11.945587}
     speed: 2
-    m_Value: {x: 391.7, y: -5.108, z: -17.353}
+    m_Value: {x: 6.76748, y: 1.752717, z: -11.945587}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -524,13 +524,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.09755931, y: 0.04653964, z: -0.0045658895, w: -0.9941305}
+    m_Target: {x: 0.15118197, y: 0.02730529, z: -0.0041792816, w: 0.98811996}
     speed: 2
-    m_Value: {x: -0.09755931, y: 0.04653964, z: -0.0045658895, w: -0.9941305}
+    m_Value: {x: 0.15118197, y: 0.02730529, z: -0.0041792816, w: 0.98811996}
   m_Size:
-    m_Target: 25.4485
+    m_Target: 18.911945
     speed: 2
-    m_Value: 25.4485
+    m_Value: 18.911945
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -579,20 +579,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scribs
+    - Assets/prefabs
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scribs
+  - Assets/prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\STALIN\Desktop\REPOSITORIO GP3.2\grafosGP3.2
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 52}
-    m_SelectedIDs: f22b0000
-    m_LastClickedID: 11250
-    m_ExpandedIDs: 00000000b62b0000102c0000e02d00003c2f0000f8350000fa350000fc35000000ca9a3bffffff7f
+    m_SelectedIDs: 002e0000
+    m_LastClickedID: 11776
+    m_ExpandedIDs: 00000000b42b00000e2c0000de2d00003a2f0000f8350000fa350000fc35000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -620,7 +620,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000b62b0000102c0000e02d00003c2f0000f8350000fa350000fc350000
+    m_ExpandedIDs: 00000000b42b00000e2c0000de2d00003a2f0000f8350000fa350000fc350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -645,8 +645,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: f22b0000
-    m_LastClickedInstanceID: 11250
+    m_SelectedInstanceIDs: 64320000
+    m_LastClickedInstanceID: 12900
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 42270000fc2a00005230000000000000fc38faffb449f6ffe02e0000
     m_RenameOverlay:

@@ -4960,6 +4960,11 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1419842596}
+--- !u!1 &1501062069 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1424236913727786, guid: 056fbbcd2b95bbb479421c6f57a55376,
+    type: 2}
+  m_PrefabInternal: {fileID: 747712720}
 --- !u!1 &1553519203
 GameObject:
   m_ObjectHideFlags: 0
@@ -16592,7 +16597,7 @@ MonoBehaviour:
   isUppercase: 0
   maxInputLength: 20
   inputText: {fileID: 1104864011}
-  prueba: {fileID: 1424236913727786, guid: 056fbbcd2b95bbb479421c6f57a55376, type: 2}
+  prueba: {fileID: 1501062069}
   characters: {fileID: 64471167}
 --- !u!114 &2099479776
 MonoBehaviour:

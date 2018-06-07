@@ -19,8 +19,12 @@ public class pruebas : MonoBehaviour
     public List<Nombres> nombre = new List<Nombres>();
     public int i;
     string obtener="";
-    Coroutine cH=null;
-    
+    Coroutine cH;
+    //public void Start()
+    //{
+    //    StartCoroutine(H());
+    //}
+
     IEnumerator H()
     {
         Debug.Log("hi");
@@ -71,6 +75,7 @@ public class pruebas : MonoBehaviour
             {
                 origin = Instantiate(sphere, pRed, Quaternion.identity);
                 origin.GetComponent<Renderer>().material.color = Color.red;
+                origin.name = "origen"+i;
 
                 var traza = origin.AddComponent<LineRenderer>();
                 traza.startWidth = traza.endWidth = .2f;
@@ -80,8 +85,10 @@ public class pruebas : MonoBehaviour
                 traza.SetPosition(0, pRed);
                 destino = Instantiate(sphere, pBlue, Quaternion.identity);
                 destino.GetComponent<Renderer>().material.color = Color.blue;
+                destino.name = "destino" + i;
 
                 traza.SetPosition(1, pBlue);
+                
                 Debug.Log("Posicion del Objeto: " + i + " nombre objeto: " + strObjeto);
                 //Para poner el texto de las esferas de objeto
                 textGo.transform.position = destino.transform.position;
@@ -115,7 +122,7 @@ public class pruebas : MonoBehaviour
     public void InitializeH()
     {
         Debug.Log("que hay"+cH);
-        if (cH == null)
+        if (cH != null)
         {
 
             StopCoroutine(cH);
