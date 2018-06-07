@@ -8,8 +8,6 @@ using VRKeyboard.Utils;
 
 public class pruebas : MonoBehaviour
 {
-    //public InputField texbox1;
-    //public GameObject teclado;
     public GameObject origin;
     public GameObject destino;
     public GameObject texto;
@@ -20,40 +18,15 @@ public class pruebas : MonoBehaviour
     //Creacino de la lista que contendra todo
     public List<Nombres> nombre = new List<Nombres>();
     public int i;
-    //public Text inputText;
     string obtener="";
-    //public GameObject input;
-    //public string Input
-    //{
-    //    get { return inputText.text; }
-    //    set { inputText.text = value; }
-    //}
-
-    // Use this for initialization
-    void Start()
-    {
-        //H();
-        
-
-    }
-
     public IEnumerator H()
     {
         KeyboardManager objKey = new KeyboardManager();
-        //Input input = new Input();
-       //string l= objKey.Input.GetHashCode().ToString();
-        //string r = input.get();
-        
-        
-
-        //Instantiate(objKey);
         string a = objKey.Input;
         //obtener = objKey.inputText.text;
         Debug.Log("que saca del imput: " + a);
-
         string textoO = obtener;
-        Debug.Log("que obtieneEN LA CAJA :  " + textoO);
-    
+        Debug.Log("que obtieneEN LA CAJA :  " + textoO);    
         int nEsferas = 7;
         //link de la consulta donde se sustraen los datos
         WWW www = new WWW("http://es-la.dbpedia.org/sparql?default-graph-uri" +
@@ -124,7 +97,6 @@ public class pruebas : MonoBehaviour
         }
 
     }
-
     Vector3 GeneratedPosition()
     {
         int x, y, z;
@@ -133,5 +105,26 @@ public class pruebas : MonoBehaviour
         z = Random.Range(min, max);
         return new Vector3(x, y, z);
 
+    }
+    Coroutine cH;
+    public void InitializeH()
+    {
+        if (cH != null)
+        {
+            StopCoroutine(cH);
+            cH = StartCoroutine(ieH());
+        }        
+    }
+    public void StopH()
+    {
+        if (cH!= null)
+        {
+            StopCoroutine(cH);
+        }
+    }
+    private IEnumerator ieH()
+    {
+        Debug.Log("CAll");
+        yield return null;
     }
 } 

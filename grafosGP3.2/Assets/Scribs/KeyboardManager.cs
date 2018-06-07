@@ -65,10 +65,7 @@ namespace VRKeyboard.Utils {
         }
         public void Enter()
         {
-            GameObject probar =Instantiate(prueba);
-            probar.name = "cube";
-            probar.SetActive(true);
-            probar.GetComponent<pruebas>().StartCoroutine("H");
+            prueba.GetComponent<pruebas>().InitializeH();
            
         }
 
