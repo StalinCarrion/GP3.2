@@ -20,12 +20,33 @@ public class pruebas : MonoBehaviour
     public int i;
     string obtener="";
     Coroutine cH;
-    //public void Start()
-    //{
-    //    StartCoroutine(H());
-    //}
+    public void InitializeH()
+    {
 
-    IEnumerator H()
+        if (cH != null)
+        {
+            StopCoroutine(cH);
+            GameObject[] todo;
+            todo = GameObject.FindGameObjectsWithTag("esferas");
+            for (int i = 0; i < todo.Length; i++)
+            {
+                Destroy(todo[i].gameObject);
+            }
+            Object.Destroy(origin);
+            Object.Destroy(destino);
+            Debug.Log("Aqui paro la corutina");
+        }
+        cH = StartCoroutine(ieH());
+        Debug.Log("cH empezo como corutina");
+    }
+    public void StopH()
+    {
+        if (cH != null)
+        {
+            StopCoroutine(cH);
+        }
+    }
+    private IEnumerator ieH()
     {
         Debug.Log("hi");
         //KeyboardManager objKey = new KeyboardManager();
@@ -75,7 +96,8 @@ public class pruebas : MonoBehaviour
             {
                 origin = Instantiate(sphere, pRed, Quaternion.identity);
                 origin.GetComponent<Renderer>().material.color = Color.red;
-                origin.name = "origen"+i;
+                //origin.name = "origen"+i;
+                origin.tag = "esferas";
 
                 var traza = origin.AddComponent<LineRenderer>();
                 traza.startWidth = traza.endWidth = .2f;
@@ -85,7 +107,8 @@ public class pruebas : MonoBehaviour
                 traza.SetPosition(0, pRed);
                 destino = Instantiate(sphere, pBlue, Quaternion.identity);
                 destino.GetComponent<Renderer>().material.color = Color.blue;
-                destino.name = "destino" + i;
+                //destino.name = "destino" + i;
+                destino.tag = "esferas";
 
                 traza.SetPosition(1, pBlue);
                 
@@ -103,6 +126,9 @@ public class pruebas : MonoBehaviour
                 //textGo.Color = new Color(1, 0, 1, 0.5f); //violeta transparente al 50%   100%, 64.7%, 0%, 1
                 textMesh.color = new Color(0, 255, 0, 1);
                 textMeshSujeto.color = new Color(100, 64.7f, 0, 1);
+                textGo.tag = "esferas";
+                textSujeto.tag = "esferas";
+                //textSujeto.tag = "";
             }
         }
 
@@ -117,29 +143,5 @@ public class pruebas : MonoBehaviour
         return new Vector3(x, y, z);
 
     }
-    
-    
-    public void InitializeH()
-    {
-        Debug.Log("que hay"+cH);
-        if (cH != null)
-        {
-
-            StopCoroutine(cH);
-            cH = StartCoroutine(H());
-            Debug.Log("que hay ahora" + cH);
-        }        
-    }
-    public void StopH()
-    {
-        if (cH!= null)
-        {
-            StopCoroutine(cH);
-        }
-    }
-    private IEnumerator ieH()
-    {
-        Debug.Log("CAll");
-        yield return null;
-    }
+ 
 } 

@@ -2391,6 +2391,10 @@ Prefab:
       propertyPath: m_Name
       value: cube
       objectReference: {fileID: 0}
+    - target: {fileID: 1424236913727786, guid: 056fbbcd2b95bbb479421c6f57a55376, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 056fbbcd2b95bbb479421c6f57a55376, type: 2}
   m_IsPrefabParent: 0
