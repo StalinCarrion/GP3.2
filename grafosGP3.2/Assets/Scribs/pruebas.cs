@@ -17,9 +17,17 @@ public class pruebas : MonoBehaviour
     public int min, max;
     //Creacino de la lista que contendra todo
     public List<Nombres> nombre = new List<Nombres>();
+    public Text inputText;
     public int i;
     string obtener="";
     Coroutine cH;
+    public GameObject input;
+    string Input
+    {
+        get { return inputText.text; }
+        set { inputText.text = value; }
+    }
+
     public void InitializeH()
     {
 
@@ -48,13 +56,9 @@ public class pruebas : MonoBehaviour
     }
     private IEnumerator ieH()
     {
-        Debug.Log("hi");
-        //KeyboardManager objKey = new KeyboardManager();
-        //string a = objKey.Input;
-        ////obtener = objKey.inputText.text;
-        //Debug.Log("que saca del imput: " + a);
-        string textoO = "Ecuador";
-        //Debug.Log("que obtieneEN LA CAJA :  " + textoO);    
+        obtener = inputText.text;
+        Debug.Log("Que hay: "+obtener);
+        string textoO = obtener.Trim();   
         int nEsferas = 7;
         //link de la consulta donde se sustraen los datos
         WWW www = new WWW("http://es-la.dbpedia.org/sparql?default-graph-uri" +
@@ -111,6 +115,7 @@ public class pruebas : MonoBehaviour
                 destino.tag = "esferas";
 
                 traza.SetPosition(1, pBlue);
+                
                 
                 Debug.Log("Posicion del Objeto: " + i + " nombre objeto: " + strObjeto);
                 //Para poner el texto de las esferas de objeto
