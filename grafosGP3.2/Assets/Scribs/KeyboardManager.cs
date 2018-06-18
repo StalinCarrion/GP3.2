@@ -10,9 +10,9 @@ using System.Collections.Generic;
 namespace VRKeyboard.Utils {
     public class KeyboardManager : MonoBehaviour {
 
-        List<string> words = new List<string>();
-        string myText = "";
-        public InputField textAutocomplete;
+        //List<string> words = new List<string>();
+        //string myText = "";
+        //public InputField textAutocomplete;
 
         
         #region Public Variables
@@ -74,8 +74,8 @@ namespace VRKeyboard.Utils {
         {
             
                 prueba.GetComponent<pruebas>().InitializeH();
-                words.Add(inputText.text);
-            Debug.Log("Que se guarda: " + words);
+            //    words.Add(inputText.text);
+            //Debug.Log("Que se guarda: " + words);
 
 
         }
@@ -118,21 +118,21 @@ namespace VRKeyboard.Utils {
         #endregion
         // ObtenerText
 
-        private void OnGUI()
-        {
-            string oldString = myText;
-            //myText = GUI.TextField(newRect(10, 10, 200, 20), myText);
-            myText = GUI.TextField(new Rect(10, 10, 200, 20), myText);
-            if (!string.IsNullOrEmpty(myText) && myText.Length > oldString.Length)
-            {
-                List<string> found = words.FindAll(w => w.StartsWith(myText));
-                if (found.Count > 0)
-                {
-                    //myText = found[0];
-                    textAutocomplete.text = found[0];
-                    print(found.Count);
-                }
-            }
-        }
+        //private void OnGUI()
+        //{
+        //    string oldString = myText;
+        //    //myText = GUI.TextField(newRect(10, 10, 200, 20), myText);
+        //    myText = GUI.TextField(new Rect(10, 10, 200, 20), myText);
+        //    if (!string.IsNullOrEmpty(myText) && myText.Length > oldString.Length)
+        //    {
+        //        List<string> found = words.FindAll(w => w.StartsWith(myText));
+        //        if (found.Count > 0)
+        //        {
+        //            //myText = found[0];
+        //            textAutocomplete.text = found[0];
+        //            print(found.Count);
+        //        }
+        //    }
+        //}
     }
 }

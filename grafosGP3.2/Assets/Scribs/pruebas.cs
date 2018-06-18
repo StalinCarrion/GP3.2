@@ -145,6 +145,8 @@ public class pruebas : MonoBehaviour
         x = Random.Range(min, max);
         y = Random.Range(min, max);
         z = Random.Range(min, max);
+        
+        
         return new Vector3(x, y, z);
 
     }
