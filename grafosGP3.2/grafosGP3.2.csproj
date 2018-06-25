@@ -349,6 +349,7 @@
     <Compile Include="Assets\HologramShader-master\Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
     <Compile Include="Assets\HologramShader-master\Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
     <Compile Include="Assets\HologramShader-master\Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
+    <Compile Include="Assets\Object\Example.cs" />
     <Compile Include="Assets\Oculus\VR\Scripts\Composition\OVRCameraComposition.cs" />
     <Compile Include="Assets\Oculus\VR\Scripts\Composition\OVRComposition.cs" />
     <Compile Include="Assets\Oculus\VR\Scripts\Composition\OVRCompositionUtil.cs" />

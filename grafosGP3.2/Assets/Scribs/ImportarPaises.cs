@@ -9,10 +9,17 @@ using VRKeyboard.Utils;
 
 public class ImportarPaises : MonoBehaviour {
 
+    
+
     //public InputField texbox1;
     public GameObject origin;
     public GameObject destino;
     public GameObject texto;
+    //---------------------
+    public Vector3 vectorSujeto;
+    public Transform TransforEsfera;
+    
+    //---------------------
     //Objeto donde se guarda la esfera
     public GameObject sphere;
     //para generar el minimo y maximo en la posicion random
@@ -21,44 +28,35 @@ public class ImportarPaises : MonoBehaviour {
     public List<Nombres> nombre = new List<Nombres>();
     public int i;
     public Text inputText;
-    public string Input
-    {
-        get { return inputText.text; }
-        set { inputText.text = value; }
-    }
-
     //KeyboardManager objTeclado = new KeyboardManager();
-
-
-
-
     IEnumerator Start()
     {
-        
-        string textoO = Input;
-       Debug.Log("que obtiene:  " + textoO);
+        //-------------------------
+        vectorSujeto = TransforEsfera.position;
+        //-------------------------
+
         //get { return inputText.text; }
         Debug.Log("ESTO ES TEXTOOO " + texto);
-        int nEsferas = 15;
+        int nEsferas = 5;
         //link de la consulta donde se sustraen los datos
         WWW www = new WWW("http://es-la.dbpedia.org/sparql?default-graph-uri" +
             "=&query=select+%3Chttp%3A%2F%2Fes-la.dbpedia.org%2Fresource%2FEcuador%" +
             "3E+%3Fp+%3Fo+where+%7B%3Chttp%3A%2F%2Fes-la.dbpedia.org%2Fresource%2FEcuador%3E" +
-            "+%3Fp+%3Fo%7D+LIMIT+" + 20 + "&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on");
+            "+%3Fp+%3Fo%7D+LIMIT+" + 5 + "&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on");
         //espera cuando se carge los datos
         yield return www;
         //para presentar en consola
         print(www.text);
         //leer los datos presentados
         JsonData data = JsonMapper.ToObject(www.text);
-        var pRed = GeneratedPosition();
+        //var pRed = GeneratedPosition();
 
         for (int i = 0; i < nEsferas; i++)
         {
             GameObject textGo = new GameObject("Objeto");
             GameObject textSujeto = new GameObject("Sujeto");
 
-            var pBlue = GeneratedPosition();
+            //var pBlue = GeneratedPosition();
             //se crear una variable de Nombre
             Nombres nom = new Nombres();
             //se ingresa a cada variable el dato que se sustrae
@@ -78,7 +76,8 @@ public class ImportarPaises : MonoBehaviour {
             //texbox1.text = ("Posicion del Objeto: " + i + " nombre objeto: " + strObjeto);
             if (nom.Sujeto != " " && nom.TypeSujeto == "uri" && nom.Objeto != " " && nom.TypePredicado == "uri")
             {
-                origin = Instantiate(sphere, pRed, Quaternion.identity);
+                
+                origin = Instantiate(sphere, vectorSujeto, Quaternion.identity);
                 origin.GetComponent<Renderer>().material.color = Color.red;
 
                 var traza = origin.AddComponent<LineRenderer>();
@@ -86,11 +85,13 @@ public class ImportarPaises : MonoBehaviour {
                 traza.useWorldSpace = true;
 
                 traza.positionCount = 2;
-                traza.SetPosition(0, pRed);
-                destino = Instantiate(sphere, pBlue, Quaternion.identity);
+                traza.SetPosition(0, vectorSujeto);
+                destino = Instantiate(sphere, new Vector3(Random.Range(-30, -46), Random.Range(30, 37), -66.31f), Quaternion.identity);
                 destino.GetComponent<Renderer>().material.color = Color.blue;
-
-                traza.SetPosition(1, pBlue);
+                //var po = origin.transform.position;
+                //var de = destino.transform.position;
+                traza.SetPosition(1,destino.transform.position);
+                //Debug.DrawLine(po,de, Color.black);
                 Debug.Log("Posicion del Objeto: " + i + " nombre objeto: " + strObjeto);
                 //Para poner el texto de las esferas de objeto
                 textGo.transform.position = destino.transform.position;
@@ -110,16 +111,23 @@ public class ImportarPaises : MonoBehaviour {
 
     }
 
-    Vector3 GeneratedPosition()
-    {
-        int x, y, z;
-        x = Random.Range(min, max);
-        y = Random.Range(min, max);
-        z = Random.Range(min, max);
-        return new Vector3(x, y, z);
-    }
+    //Vector3 GeneratedPosition()
+    //{
+    //    int x, y;
+
+    //    x = Random.Range(min, max);
+    //    y = Random.Range(min, max);
+        
+        
+        
+    //    return new Vector3(x, y);
+    //}
 
 
-	
-	
+
+
+
+
+
+
 }
