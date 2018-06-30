@@ -63,49 +63,87 @@ namespace VRKeyboard.Utils {
 
         #region Public Methods
         public void Backspace() {
-            if (Input.Length > 0) {
-                Input = Input.Remove(Input.Length - 1);
-            } else {
-                return;
+            OVRInput.Update();
+            if (OVRInput.Get(OVRInput.Button.One))
+            {
+                if (Input.Length > 0)
+                {
+                    Input = Input.Remove(Input.Length - 1);
+                }
+                else
+                {
+                    return;
+                }
             }
+
+            
         }
         int b=0 ;
         public void Enter()
         {
-            
+            OVRInput.Update();
+            if (OVRInput.Get(OVRInput.Button.One))
+            {
                 prueba.GetComponent<pruebas>().InitializeH();
-            //    words.Add(inputText.text);
-            //Debug.Log("Que se guarda: " + words);
-
-
+                //    words.Add(inputText.text);
+                //Debug.Log("Que se guarda: " + words);
+            }
         }
-        public void pruebagit()
-        {
 
-        }
 
         public void Clear() {
-            Input = "";
+            OVRInput.Update();
+            if (OVRInput.Get(OVRInput.Button.One))
+            {
+                Input = "";
+            }          
         }
 
         public void CapsLock() {
-            if (capslockFlag) {
-                foreach (var pair in keysDictionary) {
-                    pair.Value.text = ToUpperCase(pair.Value.text);
+            OVRInput.Update();
+            if (OVRInput.Get(OVRInput.Button.One))
+            {
+                if (Input.Length > 0)
+                {
+                    Input = Input.Remove(Input.Length - 1);
                 }
-            } else {
-                foreach (var pair in keysDictionary) {
-                    pair.Value.text = ToLowerCase(pair.Value.text);
+                else
+                {
+                    return;
                 }
-            }
-            capslockFlag = !capslockFlag;
+
+                if (capslockFlag)
+                {
+                    foreach (var pair in keysDictionary)
+                    {
+                        pair.Value.text = ToUpperCase(pair.Value.text);
+                    }
+                }
+                else
+                {
+                    foreach (var pair in keysDictionary)
+                    {
+                        pair.Value.text = ToLowerCase(pair.Value.text);
+                    }
+                }
+                capslockFlag = !capslockFlag;
+            }            
         }
         #endregion
 
         #region Private Methods
         public void GenerateInput(string s) {
-            if (Input.Length > maxInputLength) { return; }
-            Input += s;
+
+            OVRInput.Update();
+
+            if (OVRInput.Get(OVRInput.Button.One))
+            {
+                if (Input.Length > maxInputLength)
+                {
+                    return;
+                }
+                Input += s;
+            }
         }
 
         private string ToLowerCase(string s) {

@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-C:/Users/STALIN/Desktop/REPOSITORIO GP3.2/GP3.2/grafosGP3.2/version1.apk
+C:/Users/STALIN/Desktop/RepositorioGP3.2/grafosGP3.2/v2.apk
 SceneListBegin?
 Assets/Scenes/Demo.unity
 SceneListEnd?
@@ -234,7 +234,7 @@ e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 67a5f2c97205d2e41a8ed7c7ce898f6e UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension
 67a5f2c97205d2e41a8ed7c7ce898f6e UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSourceExtension
-01fd38351e6919a76a527121d8ed084d Assembly-CSharp.dll:.pruebas
+e407b7f6c25c78e9d3c8bbb6d1d584fc Assembly-CSharp.dll:.pruebas
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -247,6 +247,7 @@ a764ed39791e886a53f13cfce418447e Assembly-CSharp.dll:UnityEngine.PostProcessing.
 537843cf8c7f8ab266c7cd1191ca22fb Assembly-CSharp.dll:.OVRLint
 715ee802f49103c54cba7971ac57cac0 Assembly-CSharp.dll:UnityEngine.EventSystems.OVRInputModule
 584795015275d7765225ad872c0e8bd8 Assembly-CSharp.dll:.OVRGrabber
+90f7577c3cf4e3fd2d65ade5152de050 Assembly-CSharp.dll:.Example
 bd4787eed7b52d749b5d4999a0b192e6 Assembly-CSharp.dll:VRKeyboard.Utils.GazeRaycaster
 bc79872c81f3cda9be1ec427f70f92aa Vuforia.UnityExtensions.dll:Vuforia.AnchorBehaviour
 0561521e336e270e6e5a9c61387cb838 Vuforia.UnityExtensions.dll:Vuforia.AnchorInputListenerBehaviour
@@ -314,4 +315,4 @@ a924c90a95cf65003f662aa5e30abb6b Vuforia.UnityExtensions.dll:Vuforia.VuforiaConf
 01e6f145049f3a676df6dc247eabf176 Vuforia.UnityExtensions.dll:Vuforia.VuMarkBehaviour
 3d1b89310e77c34bc0c8d7132231345c Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 05524b8f659e7bfe5756d1335fec24ba Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
-791981f4294750c02976ae1b77c52aee Assembly-CSharp.dll:.ImportarPaises
+c39f2d1c827b8e32946223736ad82a6c Assembly-CSharp.dll:.ImportarPaises
