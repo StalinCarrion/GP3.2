@@ -12,13 +12,22 @@ public class pruebas : MonoBehaviour
     public Vector3 vectorSujeto;
     public Transform TransforEsfera;
     //Fin
+    //Inserto los objetos que quiero mostrar al ejecutar
     public GameObject origin;
     public GameObject destino;
     public GameObject texto;
-    //Objeto donde se guarda la esfera
+    //materiales que van a ir en los objetos
+    public Material MaObjeto;
+    public Material MaSujeto;
+    public Material MaObjLiteral;
+    public Material MaPredicado;
+
+    //fin
+    //Objeto donde se guarda la esfera y el cubo
     public GameObject sphere;
-    //para generar el minimo y maximo en la posicion random
-    public int min, max;
+    public GameObject cube;
+
+    
     //Creacino de la lista que contendra todo
     public List<Nombres> nombre = new List<Nombres>();
     public Text inputText;
@@ -66,12 +75,12 @@ public class pruebas : MonoBehaviour
         obtener = inputText.text;
         Debug.Log("Que hay: "+obtener);
         string textoO = obtener.Trim();   
-        int nEsferas = 6;
+        int nEsferas = 7;
         //link de la consulta donde se sustraen los datos
         WWW www = new WWW("http://es-la.dbpedia.org/sparql?default-graph-uri" +
             "=&query=select+%3Chttp%3A%2F%2Fes-la.dbpedia.org%2Fresource%2F"+textoO+ "%" +
             "3E+%3Fp+%3Fo+where+%7B%3Chttp%3A%2F%2Fes-la.dbpedia.org%2Fresource%2F"+textoO+ "%3E" +
-            "+%3Fp+%3Fo%7D+LIMIT+" + 6 + "&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on");
+            "+%3Fp+%3Fo%7D+LIMIT+" + 7 + "&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on");
         //espera cuando se carge los datos
         yield return www;
         //para presentar en consola
@@ -101,10 +110,11 @@ public class pruebas : MonoBehaviour
             strSujeto = nom.Sujeto;
 
             //texbox1.text = ("Posicion del Objeto: " + i + " nombre objeto: " + strObjeto);
-            if (nom.Sujeto != " " && nom.TypeSujeto == "uri" && nom.Objeto != " " && nom.TypePredicado == "uri")
+            if (nom.Sujeto != " " && nom.TypeSujeto != " " && nom.Objeto != " " )
             {
+                //se crea la esfera sujeto
                 origin = Instantiate(sphere, vectorSujeto, Quaternion.identity);
-                origin.GetComponent<Renderer>().material.color = Color.red;
+                origin.GetComponent<MeshRenderer>().material = MaSujeto;
                 //origin.name = "origen"+i;
                 origin.tag = "esferas";
                 origin.transform.localScale= new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
@@ -112,16 +122,31 @@ public class pruebas : MonoBehaviour
                 traza.startWidth = traza.endWidth = 0.04f;
                 traza.useWorldSpace = true;
                 traza.positionCount = 2;
+                
+                //textSujeto.tag = "";
+                if (nom.TypeObjeto=="uri")
+                {
+                    destino = Instantiate(sphere, new Vector3(Random.Range(-37.500f, -40.500f), Random.Range(32.119f, 31.062f), -71.213f), Quaternion.identity);
+                    destino.GetComponent<MeshRenderer>().material = MaObjeto;                 
+                    destino.tag = "esferas";
+                    destino.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
+
+                }
+                else
+                {
+                    destino = Instantiate(cube, new Vector3(Random.Range(-37.500f, -40.500f), Random.Range(32.119f, 31.062f), -71.213f), Quaternion.identity);
+                    destino.GetComponent<MeshRenderer>().material = MaObjLiteral;
+                    destino.tag = "esferas";
+                    destino.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
+                }
+
                 traza.SetPosition(0, vectorSujeto);
+
                 //traza.startWidth = 0.06f;
-                destino = Instantiate(sphere, new Vector3(Random.Range(-37.500f, -40.500f), Random.Range(32.119f, 31.062f), -71.213f), Quaternion.identity);
-                destino.GetComponent<Renderer>().material.color = Color.blue;
-                //destino.name = "destino" + i;
-                destino.tag = "esferas";
-                destino.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
+
                 traza.SetPosition(1, destino.transform.position);
                 //traza.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
-               
+                traza.material = MaPredicado;
                 //traza.endWidth = 4;
                 Debug.Log("Posicion del Objeto: " + i + " nombre objeto: " + strObjeto);
                 //Para poner el texto de las esferas de objeto
@@ -141,7 +166,6 @@ public class pruebas : MonoBehaviour
                 textSujeto.tag = "esferas";
                 textGo.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
                 textSujeto.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
-                //textSujeto.tag = "";
             }
         }
 

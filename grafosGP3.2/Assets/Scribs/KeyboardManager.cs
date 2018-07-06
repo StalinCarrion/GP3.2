@@ -7,12 +7,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
+
 namespace VRKeyboard.Utils {
     public class KeyboardManager : MonoBehaviour {
 
         //List<string> words = new List<string>();
         //string myText = "";
         //public InputField textAutocomplete;
+        //PAra desaparecer la esfera
+        public GameObject esferaEnvolvente;
 
         
         #region Public Variables
@@ -78,16 +81,21 @@ namespace VRKeyboard.Utils {
 
             
         }
-        int b=0 ;
+        
         public void Enter()
         {
+            //PAra el GEarVR
             OVRInput.Update();
             if (OVRInput.Get(OVRInput.Button.One))
             {
                 prueba.GetComponent<pruebas>().InitializeH();
+                esferaEnvolvente.GetComponent<Renderer>().enabled = false;
                 //    words.Add(inputText.text);
                 //Debug.Log("Que se guarda: " + words);
             }
+            //prueba.GetComponent<pruebas>().InitializeH();
+            ////esferaEnvolvente.GetComponent<Renderer>().enabled = false;
+
         }
 
 
@@ -103,14 +111,14 @@ namespace VRKeyboard.Utils {
             OVRInput.Update();
             if (OVRInput.Get(OVRInput.Button.One))
             {
-                if (Input.Length > 0)
-                {
-                    Input = Input.Remove(Input.Length - 1);
-                }
-                else
-                {
-                    return;
-                }
+                //if (Input.Length > 0)
+                //{
+                //    Input = Input.Remove(Input.Length - 1);
+                //}
+                //else
+                //{
+                //    return;
+                //}
 
                 if (capslockFlag)
                 {
@@ -147,11 +155,16 @@ namespace VRKeyboard.Utils {
         }
 
         private string ToLowerCase(string s) {
-            return s.ToLower();
+            
+                return s.ToLower();
+            
+            
         }
 
         private string ToUpperCase(string s) {
-            return s.ToUpper();
+            
+                return s.ToUpper();
+
         }
         #endregion
         // ObtenerText

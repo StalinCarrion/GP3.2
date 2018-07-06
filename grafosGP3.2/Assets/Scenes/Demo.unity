@@ -1989,7 +1989,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2099479775}
-        m_MethodName: ObtenerTexto
+        m_MethodName: CapsLock
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3019,9 +3019,12 @@ MonoBehaviour:
   origin: {fileID: 1000746496777312, guid: 80381b1abca2f8940ae1fb436f7427a6, type: 2}
   destino: {fileID: 1000746496777312, guid: 80381b1abca2f8940ae1fb436f7427a6, type: 2}
   texto: {fileID: 1710021758661122, guid: 21c220e753ed54e46b26e9a62470f84d, type: 2}
+  MaObjeto: {fileID: 2100000, guid: 031f146b80cc80f408d3def685ab9f17, type: 2}
+  MaSujeto: {fileID: 2100000, guid: cea81d24a3f92cc42897d660ae0d69bd, type: 2}
+  MaObjLiteral: {fileID: 2100000, guid: b6bed28c0e2229e4b83cba8a36bddc1d, type: 2}
+  MaPredicado: {fileID: 2100000, guid: a7c3e3901b62d31448fc6eda107e3735, type: 2}
   sphere: {fileID: 1000746496777312, guid: 80381b1abca2f8940ae1fb436f7427a6, type: 2}
-  min: 0
-  max: 0
+  cube: {fileID: 1438101925819302, guid: 077542293e17c5044b72bac3d6cbe6d4, type: 2}
   nombre: []
   inputText: {fileID: 1104864011}
   i: 0
@@ -3059,6 +3062,101 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!82 &380413872
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 380413865}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2fb0c288c0871004f81b861caf3dbf92, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.269
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &380491187
 GameObject:
   m_ObjectHideFlags: 0
@@ -6752,6 +6850,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &842913865 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1327865271858702, guid: 2602dbe7a2b8e3d4e86b622f2f2d3f35,
+    type: 2}
+  m_PrefabInternal: {fileID: 2090055252}
 --- !u!1 &845044629
 GameObject:
   m_ObjectHideFlags: 0
@@ -9268,7 +9371,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Peru
+  m_Text: Ecuador
 --- !u!1 &1113320558
 GameObject:
   m_ObjectHideFlags: 0
@@ -27503,7 +27606,7 @@ Prefab:
     - target: {fileID: 23531074549612494, guid: 2602dbe7a2b8e3d4e86b622f2f2d3f35,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2602dbe7a2b8e3d4e86b622f2f2d3f35, type: 2}
@@ -27675,8 +27778,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2099479773}
   m_LocalRotation: {x: 0.1739097, y: -0, z: -0, w: 0.9847616}
-  m_LocalPosition: {x: 0, y: 0, z: -71.951}
-  m_LocalScale: {x: 0.0017773677, y: 0.0017773639, z: 0.0017773639}
+  m_LocalPosition: {x: 0, y: 0, z: -72.069}
+  m_LocalScale: {x: 0.0007662549, y: 0.0007662539, z: 0.0007662539}
   m_Children:
   - {fileID: 2116958223}
   - {fileID: 1991966183}
@@ -27686,7 +27789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 20.03, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -39.031, y: 31.622}
+  m_AnchoredPosition: {x: -39.031, y: 31.494}
   m_SizeDelta: {x: 479.9, y: 223.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2099479775
@@ -27701,6 +27804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811bda1638b264f41bb8cb95f030b819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esferaEnvolvente: {fileID: 842913865}
   isUppercase: 0
   maxInputLength: 20
   inputText: {fileID: 1104864011}
@@ -28334,6 +28438,11 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114192588981952594, guid: 4955e7574ef558e44bb1cd3a62b063ad,
+        type: 2}
+      propertyPath: m_Text
+      value: Ecuador
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4955e7574ef558e44bb1cd3a62b063ad, type: 2}
