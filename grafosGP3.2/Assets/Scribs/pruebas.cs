@@ -5,6 +5,7 @@ using LitJson;
 using System.IO;
 using UnityEngine.UI;
 using VRKeyboard.Utils;
+using System.Globalization;
 
 public class pruebas : MonoBehaviour
 {
@@ -72,14 +73,20 @@ public class pruebas : MonoBehaviour
     }
     private IEnumerator ieH()
     {
+        //obtengo el texto del inpput
         obtener = inputText.text;
-        Debug.Log("Que hay: "+obtener);
-        string textoO = obtener.Trim();   
+        //lo transformo a String
+        string textoO = obtener.Trim();
+        //transformo en minusculas
+        string a = textoO.ToLower();
+        //La primera va a ser mayuscula
+        string resul = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(a);
+        Debug.Log("LO QUE SE OBTIENE DEL INPUT "+ resul);
         int nEsferas = 7;
         //link de la consulta donde se sustraen los datos
         WWW www = new WWW("http://es-la.dbpedia.org/sparql?default-graph-uri" +
-            "=&query=select+%3Chttp%3A%2F%2Fes-la.dbpedia.org%2Fresource%2F"+textoO+ "%" +
-            "3E+%3Fp+%3Fo+where+%7B%3Chttp%3A%2F%2Fes-la.dbpedia.org%2Fresource%2F"+textoO+ "%3E" +
+            "=&query=select+%3Chttp%3A%2F%2Fes-la.dbpedia.org%2Fresource%2F"+ resul + "%" +
+            "3E+%3Fp+%3Fo+where+%7B%3Chttp%3A%2F%2Fes-la.dbpedia.org%2Fresource%2F"+ resul + "%3E" +
             "+%3Fp+%3Fo%7D+LIMIT+" + 7 + "&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on");
         //espera cuando se carge los datos
         yield return www;
