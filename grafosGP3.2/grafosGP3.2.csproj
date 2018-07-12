@@ -405,6 +405,7 @@
     <Compile Include="Assets\Scribs\Nombres.cs" />
     <Compile Include="Assets\Scribs\pruebas.cs" />
     <Compile Include="Assets\Scribs\QR.cs" />
+    <Compile Include="Assets\Scribs\texto.cs" />
     <Compile Include="Assets\VRKeyboard\Scripts\GazeRaycaster.cs" />
   </ItemGroup>
   <ItemGroup>

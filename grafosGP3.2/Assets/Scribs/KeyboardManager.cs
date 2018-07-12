@@ -16,7 +16,7 @@ namespace VRKeyboard.Utils {
         //public InputField textAutocomplete;
         //PAra desaparecer la esfera
         public GameObject esferaEnvolvente;
-
+        
         
         #region Public Variables
         [Header("User defined")]
@@ -95,7 +95,7 @@ namespace VRKeyboard.Utils {
             //}
             prueba.GetComponent<pruebas>().InitializeH();
             ////esferaEnvolvente.GetComponent<Renderer>().enabled = false;
-
+            
         }
 
 
