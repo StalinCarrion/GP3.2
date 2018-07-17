@@ -9,6 +9,7 @@ using System.Globalization;
 
 public class pruebas : MonoBehaviour
 {
+    string testPalabra="";
     //Obtengo la posicion que quiero para el sujeto
     public Vector3 vectorSujeto;
     public Transform TransforEsfera;
@@ -16,7 +17,7 @@ public class pruebas : MonoBehaviour
     //Inserto los objetos que quiero mostrar al ejecutar
     public GameObject origin;
     public GameObject destino;
-    public GameObject texto;
+    //public GameObject texto;
     //materiales que van a ir en los objetos
     public Material MaObjeto;
     public Material MaSujeto;
@@ -112,9 +113,12 @@ public class pruebas : MonoBehaviour
             nombre.Add(nom);
             //Para ver el nombre del objeto
             string strObjeto;
+            string strPredicado;
             string strSujeto;
             strObjeto = nom.Objeto;
             strSujeto = nom.Sujeto;
+            strPredicado = nom.Predicado;
+            
 
             //texbox1.text = ("Posicion del Objeto: " + i + " nombre objeto: " + strObjeto);
             if (nom.Sujeto != " " && nom.TypeSujeto != " " && nom.Objeto != " " )
@@ -155,29 +159,67 @@ public class pruebas : MonoBehaviour
                 //traza.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
                 traza.material = MaPredicado;
                 //traza.endWidth = 4;
-                Debug.Log("Posicion del Objeto: " + i + " nombre objeto: " + strObjeto);
+                //Debug.Log("Posicion del Objeto: " + i + " nombre objeto: " + strObjeto);
                 //Para poner el texto de las esferas de objeto
                 textGo.transform.position = destino.transform.position;
                 //Para poner el texto de las esferas de objeto
                 textSujeto.transform.position = origin.transform.position;
+                
 
                 TextMesh textMesh = textGo.AddComponent<TextMesh>();
                 TextMesh textMeshSujeto = textSujeto.AddComponent<TextMesh>();
 
+                Debug.Log("strOBJETO " + strObjeto);
+                Debug.Log("strPredicado" + strPredicado);
+                Debug.Log("strSujeto " + strSujeto);
+
+
+                
                 textMesh.text = strObjeto;
                 textMeshSujeto.text = strSujeto;
                 //textGo.Color = new Color(1, 0, 1, 0.5f); //violeta transparente al 50%   100%, 64.7%, 0%, 1
                 textMesh.color = new Color(0, 255, 0, 1);
                 textMeshSujeto.color = new Color(100, 64.7f, 0, 1);
-                textGo.tag = "esferas";
-                textSujeto.tag = "esferas";
+                //textGo.tag = "esferas";
+                //textSujeto.tag = "esferas";
                 textGo.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
                 textSujeto.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
             }
         }
 
     }
-   
-   
- 
+
+    public string ObtenerURL(string palabra, int longitud)
+    {
+        string nPalabra1 = palabra.Substring(0, 43);
+        int tamanio = longitud - 43;
+        string nPalabra2 = palabra.Substring(43, tamanio);
+        string nPalabra;
+        nPalabra1 = "ontology";
+
+        nPalabra = nPalabra1 + nPalabra2;
+        //Debug.Log("palabra "+palabra.Substring(42, longitud));
+        return nPalabra;
+    }
+
+    public void Start()
+    {
+        //
+        testPalabra = "http://www.ontologydesignpatterns.org/ont/d0.owl#Location";
+        string nPalabra = "";
+        int longitud = testPalabra.Length;
+        nPalabra = ObtenerURL(testPalabra,longitud);
+        //Debug.Log("long " + longitud);
+        Debug.Log("aaaaaa " + nPalabra);
+        //
+        //string a ="123456789";
+        //string n = a.Substring(0, 5);
+        //Debug.Log("n "+n);
+        //int b = a.Length - 5;
+        //string c = n + a.Substring(5,b);
+        //Debug.Log("nueva palabra "+c);
+
+    }
+
+
 } 

@@ -1,0 +1,4 @@
+Palabra;Prefijo
+Hola;Saludo
+Adios;despedida
+Perro;animal

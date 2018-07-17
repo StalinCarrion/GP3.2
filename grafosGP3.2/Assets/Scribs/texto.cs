@@ -11,9 +11,9 @@ public class texto : MonoBehaviour {
     // Use this for initialization
     void Start () {
         string pal1= "Stalin";
-        string pal2="Carrion";
+        string pal2="como estas";
 
-        palabras.text = "Nombre <color=#ff0000ff>" + pal1+ "</color> Apellido " + pal2;
+        palabras.text = "Hola <color=#ff0000ff>" + pal1+ "</color> , yo bien <color=#ff0000ff> " + pal2+ "</color>";
 
 
     //    public Text tx;

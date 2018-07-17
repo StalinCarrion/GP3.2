@@ -110,24 +110,4 @@ public class ImportarPaises : MonoBehaviour {
         }
 
     }
-
-    //Vector3 GeneratedPosition()
-    //{
-    //    int x, y;
-
-    //    x = Random.Range(min, max);
-    //    y = Random.Range(min, max);
-        
-        
-        
-    //    return new Vector3(x, y);
-    //}
-
-
-
-
-
-
-
-
 }

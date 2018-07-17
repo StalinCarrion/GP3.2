@@ -3238,7 +3238,6 @@ MonoBehaviour:
   TransforEsfera: {fileID: 834491360}
   origin: {fileID: 1000746496777312, guid: 80381b1abca2f8940ae1fb436f7427a6, type: 2}
   destino: {fileID: 1000746496777312, guid: 80381b1abca2f8940ae1fb436f7427a6, type: 2}
-  texto: {fileID: 1710021758661122, guid: 21c220e753ed54e46b26e9a62470f84d, type: 2}
   MaObjeto: {fileID: 2100000, guid: 031f146b80cc80f408d3def685ab9f17, type: 2}
   MaSujeto: {fileID: 2100000, guid: cea81d24a3f92cc42897d660ae0d69bd, type: 2}
   MaObjLiteral: {fileID: 2100000, guid: b6bed28c0e2229e4b83cba8a36bddc1d, type: 2}

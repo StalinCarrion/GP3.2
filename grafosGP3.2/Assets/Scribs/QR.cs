@@ -77,14 +77,6 @@ public class QR : MonoBehaviour {
         encoded.Apply();
         return encoded;
     }
-
-    
-    
-    
-    
-    
-    
-    
     
 
 }

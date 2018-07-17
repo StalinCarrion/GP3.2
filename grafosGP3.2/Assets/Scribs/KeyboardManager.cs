@@ -10,10 +10,6 @@ using System.Collections.Generic;
 
 namespace VRKeyboard.Utils {
     public class KeyboardManager : MonoBehaviour {
-
-        //List<string> words = new List<string>();
-        //string myText = "";
-        //public InputField textAutocomplete;
         //PAra desaparecer la esfera
         public GameObject esferaEnvolvente;
         
