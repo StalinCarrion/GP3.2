@@ -115,6 +115,11 @@ public class pruebas : MonoBehaviour
             string strObjeto;
             string strPredicado;
             string strSujeto;
+            //se declaran las palabras que se van a mostrar en el entorno
+            string palabraSujeto;
+            string palabtaPredicado;
+            string palabraObjeto;
+            //Guardar los datos en los strings
             strObjeto = nom.Objeto;
             strSujeto = nom.Sujeto;
             strPredicado = nom.Predicado;
@@ -168,20 +173,41 @@ public class pruebas : MonoBehaviour
 
                 TextMesh textMesh = textGo.AddComponent<TextMesh>();
                 TextMesh textMeshSujeto = textSujeto.AddComponent<TextMesh>();
+                //se optiene la nueva palabra
+
+                palabraSujeto = ObtenerURL(strSujeto);
+                palabtaPredicado = ObtenerURL(strPredicado);
+                //palabraObjeto = ObtenerURL(strObjeto);
+
+
+                Debug.Log("strSujeto " + strSujeto);
+                Debug.Log("Nuevo Sujeto " + palabraSujeto);
+
+                Debug.Log("strPredicado" + strPredicado);
+                Debug.Log("Nuevo Predicado " + palabtaPredicado);
 
                 Debug.Log("strOBJETO " + strObjeto);
-                Debug.Log("strPredicado" + strPredicado);
-                Debug.Log("strSujeto " + strSujeto);
+                //Debug.Log("NuevoObjeto " + palabraObjeto);
 
 
-                
-                textMesh.text = strObjeto;
-                textMeshSujeto.text = strSujeto;
+                //-39.13  31.5  -72.4
+
+
+
+                //aqui cambio para comprobar si se envia el nuevo nombre
+                textMesh.text = palabtaPredicado;
+                textMeshSujeto.text = palabraSujeto;
+                //muestra el texto obtenido de la consulta
+                //textMesh.text = strObjeto;
+                //textMeshSujeto.text = strSujeto;
+
                 //textGo.Color = new Color(1, 0, 1, 0.5f); //violeta transparente al 50%   100%, 64.7%, 0%, 1
                 textMesh.color = new Color(0, 255, 0, 1);
                 textMeshSujeto.color = new Color(100, 64.7f, 0, 1);
-                //textGo.tag = "esferas";
-                //textSujeto.tag = "esferas";
+                //los tag sirven para eliminar el texto cuando le de al boton enter
+                textGo.tag = "esferas";
+                textSujeto.tag = "esferas";
+
                 textGo.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
                 textSujeto.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
             }
@@ -189,13 +215,14 @@ public class pruebas : MonoBehaviour
 
     }
 
-    public string ObtenerURL(string palabra, int longitud)
+    public string ObtenerURL(string palabra)
     {
-        string nPalabra1 = palabra.Substring(0, 43);
-        int tamanio = longitud - 43;
-        string nPalabra2 = palabra.Substring(43, tamanio);
+        int longitud = palabra.Length;
+        string nPalabra1 = palabra.Substring(0, 33);
+        int tamanio = longitud - 33;
+        string nPalabra2 = palabra.Substring(33, tamanio);
         string nPalabra;
-        nPalabra1 = "ontology";
+        nPalabra1 = "stalin";
 
         nPalabra = nPalabra1 + nPalabra2;
         //Debug.Log("palabra "+palabra.Substring(42, longitud));
@@ -208,7 +235,7 @@ public class pruebas : MonoBehaviour
         testPalabra = "http://www.ontologydesignpatterns.org/ont/d0.owl#Location";
         string nPalabra = "";
         int longitud = testPalabra.Length;
-        nPalabra = ObtenerURL(testPalabra,longitud);
+        nPalabra = ObtenerURL(testPalabra);
         //Debug.Log("long " + longitud);
         Debug.Log("aaaaaa " + nPalabra);
         //
