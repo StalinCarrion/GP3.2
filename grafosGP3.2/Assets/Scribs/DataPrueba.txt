@@ -1,0 +1,5 @@
+Palabra;Prefijo
+Hola;Saludo
+Adios;despedida
+Perro;animal
+http://es-la.dbpedia.org/resource/;dbr

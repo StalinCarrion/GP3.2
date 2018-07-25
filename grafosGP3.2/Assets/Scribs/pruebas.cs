@@ -9,7 +9,40 @@ using System.Globalization;
 
 public class pruebas : MonoBehaviour
 {
-    string testPalabra="";
+    ////variable para obtener Data.txt
+    //public Text word, prefix;
+    string filePath = "Scribs/pruebas";
+    //public string dataSearch;
+    //private int count = 1; 
+    private Dictionary<string, List<string>> palabraContenedor = new Dictionary<string, List<string>>();   
+    ////fin
+    //string testPalabra ="";
+    //Leo el documento .txt
+    public void FileDataReader()
+    {
+        
+        string applicationPath = string.Format("{0}/{1}.txt", Application.dataPath, filePath.Trim());
+        string[] stringData = File.ReadAllLines(applicationPath);
+        //string[] stringData2 = File.ReadAllLines(applicationPath);
+
+        for (int i = 1; i < stringData.Length; i++)
+        {
+            if (palabraContenedor.ContainsKey(stringData[i].Split(separator: new char[] { ';' })[0]))
+            {
+
+                palabraContenedor[stringData[i].Split(separator: new char[] { ';' })[0]].Add(stringData[i].Split(separator: new char[] { ';' })[1]);
+            }
+            else
+            {
+                List<string> contenidoValor= new List<string>();
+                contenidoValor.Add(stringData[i].Split(separator: new char[] { ';' })[1]);
+                palabraContenedor.Add(stringData[i].Split(separator: new char[] { ';' })[0],contenidoValor);
+
+            }
+            
+        }
+    }
+
     //Obtengo la posicion que quiero para el sujeto
     public Vector3 vectorSujeto;
     public Transform TransforEsfera;
@@ -33,7 +66,7 @@ public class pruebas : MonoBehaviour
     //Creacino de la lista que contendra todo
     public List<Nombres> nombre = new List<Nombres>();
     public Text inputText;
-    public int i;
+    //public int i;
     string obtener="";
     Coroutine cH;
     public GameObject input;
@@ -74,6 +107,9 @@ public class pruebas : MonoBehaviour
     }
     private IEnumerator ieH()
     {
+        //Para leer el archivo
+        FileDataReader();
+
         //obtengo el texto del inpput
         obtener = inputText.text;
         //lo transformo a String
@@ -83,12 +119,12 @@ public class pruebas : MonoBehaviour
         //La primera va a ser mayuscula
         string resul = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(a);
         Debug.Log("LO QUE SE OBTIENE DEL INPUT "+ resul);
-        int nEsferas = 7;
+        int nEsferas = 4;
         //link de la consulta donde se sustraen los datos
         WWW www = new WWW("http://es-la.dbpedia.org/sparql?default-graph-uri" +
             "=&query=select+%3Chttp%3A%2F%2Fes-la.dbpedia.org%2Fresource%2F"+ resul + "%" +
             "3E+%3Fp+%3Fo+where+%7B%3Chttp%3A%2F%2Fes-la.dbpedia.org%2Fresource%2F"+ resul + "%3E" +
-            "+%3Fp+%3Fo%7D+LIMIT+" + 7 + "&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on");
+            "+%3Fp+%3Fo%7D+LIMIT+" + 5 + "&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on");
         //espera cuando se carge los datos
         yield return www;
         //para presentar en consola
@@ -96,11 +132,25 @@ public class pruebas : MonoBehaviour
         //leer los datos presentados
         JsonData data = JsonMapper.ToObject(www.text);
 
-        for (int i = 0; i < nEsferas; i++)
+        //Para ver el nombre del objeto
+        string strObjeto;
+        string strPredicado;
+        string strSujeto;
+        //se declaran las palabras que se van a mostrar en el entorno
+        string palabraSujeto1;
+        string palabraSujeto2;
+        string palabraPredicado1;
+        string palabraPredicado2;
+        string palabraObjeto1;
+        string palabraObjeto2;
+        string nuevoSujeto;
+        string nuevoPredicado;
+        string nuevoObjeto;
+
+        for (int i = 0; i <= nEsferas; i++)
         {
             GameObject textGo = new GameObject("Objeto");
             GameObject textSujeto = new GameObject("Sujeto");
-
             //se crear una variable de Nombre
             Nombres nom = new Nombres();
             //se ingresa a cada variable el dato que se sustrae
@@ -111,20 +161,12 @@ public class pruebas : MonoBehaviour
             nom.Objeto = data["results"]["bindings"][i]["o"]["value"].ToString();
             nom.TypeObjeto = data["results"]["bindings"][i]["o"]["type"].ToString();
             nombre.Add(nom);
-            //Para ver el nombre del objeto
-            string strObjeto;
-            string strPredicado;
-            string strSujeto;
-            //se declaran las palabras que se van a mostrar en el entorno
-            string palabraSujeto;
-            string palabtaPredicado;
-            string palabraObjeto;
+            Debug.Log("Cuanto "+nombre.Count);
+            //aqui
             //Guardar los datos en los strings
             strObjeto = nom.Objeto;
             strSujeto = nom.Sujeto;
             strPredicado = nom.Predicado;
-            
-
             //texbox1.text = ("Posicion del Objeto: " + i + " nombre objeto: " + strObjeto);
             if (nom.Sujeto != " " && nom.TypeSujeto != " " && nom.Objeto != " " )
             {
@@ -175,16 +217,21 @@ public class pruebas : MonoBehaviour
                 TextMesh textMeshSujeto = textSujeto.AddComponent<TextMesh>();
                 //se optiene la nueva palabra
 
-                palabraSujeto = ObtenerURL(strSujeto);
-                palabtaPredicado = ObtenerURL(strPredicado);
-                //palabraObjeto = ObtenerURL(strObjeto);
+                palabraSujeto1 = ObtenerPrimeraPalabra(strSujeto);
+                Debug.Log("Primera palabra Sujeto " + palabraSujeto1);
+                palabraSujeto2 = ObtenerSegundaPalabra(strSujeto);
+                Debug.Log("Segunda palabra Sujeto " + palabraSujeto2);
+                palabraPredicado1 = ObtenerPrimeraPalabra(strPredicado);
+                Debug.Log("Primera palabra predicado " + palabraPredicado1);
+                palabraPredicado2 = ObtenerSegundaPalabra(strPredicado);
+                Debug.Log("Segunda palabra Predicado " + palabraPredicado2);
+                
 
+                nuevoSujeto = UnirPalabras(palabraSujeto1, palabraSujeto2);
+                Debug.Log("Nuevo Sujeto " + nuevoSujeto);
+                nuevoPredicado = UnirPalabras(palabraPredicado1, palabraPredicado2);
+                Debug.Log("Nuevo predicado " + nuevoPredicado);
 
-                Debug.Log("strSujeto " + strSujeto);
-                Debug.Log("Nuevo Sujeto " + palabraSujeto);
-
-                Debug.Log("strPredicado" + strPredicado);
-                Debug.Log("Nuevo Predicado " + palabtaPredicado);
 
                 Debug.Log("strOBJETO " + strObjeto);
                 //Debug.Log("NuevoObjeto " + palabraObjeto);
@@ -192,11 +239,9 @@ public class pruebas : MonoBehaviour
 
                 //-39.13  31.5  -72.4
 
-
-
                 //aqui cambio para comprobar si se envia el nuevo nombre
-                textMesh.text = palabtaPredicado;
-                textMeshSujeto.text = palabraSujeto;
+                textMesh.text = nuevoPredicado; //strObjeto;
+                textMeshSujeto.text = nuevoSujeto; //strSujeto;
                 //muestra el texto obtenido de la consulta
                 //textMesh.text = strObjeto;
                 //textMeshSujeto.text = strSujeto;
@@ -215,38 +260,60 @@ public class pruebas : MonoBehaviour
 
     }
 
-    public string ObtenerURL(string palabra)
+    public List<string> SerachWord(string dataSearch)
     {
-        int longitud = palabra.Length;
-        string nPalabra1 = palabra.Substring(0, 33);
-        int tamanio = longitud - 33;
-        string nPalabra2 = palabra.Substring(33, tamanio);
-        string nPalabra;
-        nPalabra1 = "stalin";
+        Debug.Log("palabra a buscar " + dataSearch);
+        if (string.IsNullOrEmpty(dataSearch))
+        {
+            return new List<string>();
+        }
+        if (palabraContenedor.ContainsKey(dataSearch))
+        {
+             
+            return palabraContenedor[dataSearch];
+        }
+        else
+        {
+            return new List<string>();
 
-        nPalabra = nPalabra1 + nPalabra2;
-        //Debug.Log("palabra "+palabra.Substring(42, longitud));
+        }
+
+        //return  new List<string>();
+    }
+    
+    public string ObtenerPrimeraPalabra(string palabra)
+    {
+        
+        
+        string Palabra = palabra.Substring(0, 33);
+        List<string> listaTEmporal = SerachWord(Palabra);
+        string nPalabra = "NAda";
+        if (listaTEmporal.Count> 0)
+        {
+            nPalabra = SerachWord(Palabra)[0];
+            Debug.Log("nPalabra " + nPalabra);
+        }
         return nPalabra;
     }
 
-    public void Start()
+    public string ObtenerSegundaPalabra(string palabra)
     {
-        //
-        testPalabra = "http://www.ontologydesignpatterns.org/ont/d0.owl#Location";
-        string nPalabra = "";
-        int longitud = testPalabra.Length;
-        nPalabra = ObtenerURL(testPalabra);
-        //Debug.Log("long " + longitud);
-        Debug.Log("aaaaaa " + nPalabra);
-        //
-        //string a ="123456789";
-        //string n = a.Substring(0, 5);
-        //Debug.Log("n "+n);
-        //int b = a.Length - 5;
-        //string c = n + a.Substring(5,b);
-        //Debug.Log("nueva palabra "+c);
-
+        int longitud = palabra.Length;
+        int tamanio = longitud - 33;
+        string nPalabra = palabra.Substring(33, tamanio);
+        //Debug.Log("palabra2 " + nPalabra);
+        return nPalabra;
     }
+
+    public string UnirPalabras(string palabra1, string palabra2)
+    {
+        string nuevaPalabra="";
+
+        nuevaPalabra = palabra1 + palabra2;
+
+        return nuevaPalabra;
+    }
+
 
 
 } 

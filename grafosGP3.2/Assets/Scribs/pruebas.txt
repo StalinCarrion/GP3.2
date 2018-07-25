@@ -1,0 +1,6 @@
+palabra;prefijo
+http://es-la.dbpedia.org/resource;resource
+http://www.w3.org/1999/02/22-rdf-;tipo
+http://dbpedia.org/ontology/;ontologia
+http://www.ontologydesignpatterns.org/ont/d0.owl;Locacion
+http://schema.org/;esquema

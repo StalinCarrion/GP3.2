@@ -10,24 +10,26 @@ public class texto : MonoBehaviour {
     
     // Use this for initialization
     void Start () {
-        string pal1= "Stalin";
-        string pal2="como estas";
+        string pal1= "Ecuador";
+        string pal2="Ecuador";
 
-        palabras.text = "Hola <color=#ff0000ff>" + pal1+ "</color> , yo bien <color=#ff0000ff> " + pal2+ "</color>";
-
-
-    //    public Text tx;
-    //// Use this for initialization
-    //void Start()
-    //{
-    //    tx.text = "<color=#ff0000ff>Hola</color> <color=#0000ffff>Como estas</color>";
-    //}
+        //palabras.text = "Hola <color=#ff0000ff>" + pal1+ "</color> , yo bien <color=#ff0000ff> " + pal2+ "</color>";
+        //palabras.text = "Select distinct * where{\n ";
 
 
-    //sparql.text = "select distinc ? p count(*) As ?morep ? "+ pal1 + " \nwhere" +
-    //    "{[] rdf:type dbo:Country ; ?p [] . \n?p rdfs:label ?etiqueta" +
-    //    "\nFILTER (lang(?etiqueta) = \"en\")" +
-    //    "\n} GROUP BY ?p ?etiqueta" +
-    //    "\nORDER BY DESC(?"+pal2+ ")";
+
+        //    public Text tx;
+        //// Use this for initialization
+        //void Start()
+        //{
+        //    tx.text = "<color=#ff0000ff>Hola</color> <color=#0000ffff>Como estas</color>";
+        //}
+
+
+        palabras.text = "select distinc ? p count(*) As ?morep ? <color=#ff0000ff>" + pal1 + "</color> \nwhere" +
+        "{[] rdf:type dbo:Country ; ?p [] . \n?p rdfs:label ?etiqueta" +
+        "\nFILTER (lang(?etiqueta) = \"en\")" +
+        "\n} GROUP BY ?p ?etiqueta" +
+        "\nORDER BY DESC(?"+pal2+ ")";
 }
 }

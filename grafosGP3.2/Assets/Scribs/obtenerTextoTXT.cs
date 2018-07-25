@@ -4,12 +4,14 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class obtenerTextoTXT : MonoBehaviour {
-    
-	public Text word, prefix;
-    string filePath = "Scribs/Data";
+public class obtenerTextoTXT : MonoBehaviour
+{
+
+    public Text word, prefix;
+
+    string filePath = "Scribs/DataPrueba";
     public string dataSearch;
-    private int count =1;
+    private int count = 1;
     private Dictionary<string, string> wordsContent = new Dictionary<string, string>();
 
     public void FileDataReader()
@@ -29,7 +31,7 @@ public class obtenerTextoTXT : MonoBehaviour {
         {
             return;
         }
-        if (wordsContent.ContainsKey (dataSearch))
+        if (wordsContent.ContainsKey(dataSearch))
         {
             word.text = dataSearch;
             prefix.text = wordsContent[dataSearch];
