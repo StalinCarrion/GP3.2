@@ -119,12 +119,12 @@ public class pruebas : MonoBehaviour
         //La primera va a ser mayuscula
         string resul = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(a);
         Debug.Log("LO QUE SE OBTIENE DEL INPUT "+ resul);
-        int nEsferas = 4;
+        int nEsferas = 5;
         //link de la consulta donde se sustraen los datos
         WWW www = new WWW("http://es-la.dbpedia.org/sparql?default-graph-uri" +
             "=&query=select+%3Chttp%3A%2F%2Fes-la.dbpedia.org%2Fresource%2F"+ resul + "%" +
             "3E+%3Fp+%3Fo+where+%7B%3Chttp%3A%2F%2Fes-la.dbpedia.org%2Fresource%2F"+ resul + "%3E" +
-            "+%3Fp+%3Fo%7D+LIMIT+" + 5 + "&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on");
+            "+%3Fp+%3Fo%7D+LIMIT+" + 6 + "&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on");
         //espera cuando se carge los datos
         yield return www;
         //para presentar en consola
@@ -136,6 +136,7 @@ public class pruebas : MonoBehaviour
         string strObjeto;
         string strPredicado;
         string strSujeto;
+        int num = 33;
         //se declaran las palabras que se van a mostrar en el entorno
         string palabraSujeto1;
         string palabraSujeto2;
@@ -189,6 +190,11 @@ public class pruebas : MonoBehaviour
                     destino.tag = "esferas";
                     destino.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
 
+                    palabraObjeto1 = ObtenerPrimeraPalabra(strObjeto, 18);
+                    Debug.Log("Primera palabra Objeto " + palabraObjeto1);
+                    palabraObjeto2 = ObtenerSegundaPalabra(strObjeto, 18);
+                    Debug.Log("Segunda palabra Objeto " + palabraObjeto2);
+
                 }
                 else
                 {
@@ -196,6 +202,11 @@ public class pruebas : MonoBehaviour
                     destino.GetComponent<MeshRenderer>().material = MaObjLiteral;
                     destino.tag = "esferas";
                     destino.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
+
+                    palabraObjeto1 = ObtenerPrimeraPalabra(strObjeto, 1);
+                    Debug.Log("Primera palabra Objeto " + palabraObjeto1);
+                    palabraObjeto2 = ObtenerSegundaPalabra(strObjeto, 1);
+                    Debug.Log("Segunda palabra Objeto " + palabraObjeto2);
                 }
 
                 traza.SetPosition(0, vectorSujeto);
@@ -217,30 +228,26 @@ public class pruebas : MonoBehaviour
                 TextMesh textMeshSujeto = textSujeto.AddComponent<TextMesh>();
                 //se optiene la nueva palabra
 
-                palabraSujeto1 = ObtenerPrimeraPalabra(strSujeto);
+                palabraSujeto1 = ObtenerPrimeraPalabra(strSujeto,num);
                 Debug.Log("Primera palabra Sujeto " + palabraSujeto1);
-                palabraSujeto2 = ObtenerSegundaPalabra(strSujeto);
+                palabraSujeto2 = ObtenerSegundaPalabra(strSujeto,num);
                 Debug.Log("Segunda palabra Sujeto " + palabraSujeto2);
-                palabraPredicado1 = ObtenerPrimeraPalabra(strPredicado);
+                palabraPredicado1 = ObtenerPrimeraPalabra(strPredicado,num);
                 Debug.Log("Primera palabra predicado " + palabraPredicado1);
-                palabraPredicado2 = ObtenerSegundaPalabra(strPredicado);
+                palabraPredicado2 = ObtenerSegundaPalabra(strPredicado,num);
                 Debug.Log("Segunda palabra Predicado " + palabraPredicado2);
                 
+
 
                 nuevoSujeto = UnirPalabras(palabraSujeto1, palabraSujeto2);
                 Debug.Log("Nuevo Sujeto " + nuevoSujeto);
                 nuevoPredicado = UnirPalabras(palabraPredicado1, palabraPredicado2);
                 Debug.Log("Nuevo predicado " + nuevoPredicado);
-
-
-                Debug.Log("strOBJETO " + strObjeto);
-                //Debug.Log("NuevoObjeto " + palabraObjeto);
-
-
+                nuevoObjeto = UnirPalabras(palabraObjeto1, palabraObjeto2);
+                Debug.Log("Nuevo Objeto " + nuevoObjeto);
                 //-39.13  31.5  -72.4
-
                 //aqui cambio para comprobar si se envia el nuevo nombre
-                textMesh.text = nuevoPredicado; //strObjeto;
+                textMesh.text = nuevoObjeto; //strObjeto;
                 textMeshSujeto.text = nuevoSujeto; //strSujeto;
                 //muestra el texto obtenido de la consulta
                 //textMesh.text = strObjeto;
@@ -268,26 +275,19 @@ public class pruebas : MonoBehaviour
             return new List<string>();
         }
         if (palabraContenedor.ContainsKey(dataSearch))
-        {
-             
+        {           
             return palabraContenedor[dataSearch];
         }
         else
         {
             return new List<string>();
-
         }
-
-        //return  new List<string>();
-    }
-    
-    public string ObtenerPrimeraPalabra(string palabra)
-    {
-        
-        
-        string Palabra = palabra.Substring(0, 33);
+    }    
+    public string ObtenerPrimeraPalabra(string palabra, int num)
+    {   
+        string Palabra = palabra.Substring(0, num);
         List<string> listaTEmporal = SerachWord(Palabra);
-        string nPalabra = "NAda";
+        string nPalabra = Palabra;
         if (listaTEmporal.Count> 0)
         {
             nPalabra = SerachWord(Palabra)[0];
@@ -295,16 +295,13 @@ public class pruebas : MonoBehaviour
         }
         return nPalabra;
     }
-
-    public string ObtenerSegundaPalabra(string palabra)
+    public string ObtenerSegundaPalabra(string palabra, int num)
     {
         int longitud = palabra.Length;
-        int tamanio = longitud - 33;
-        string nPalabra = palabra.Substring(33, tamanio);
-        //Debug.Log("palabra2 " + nPalabra);
+        int tamanio = longitud - num;
+        string nPalabra = palabra.Substring(num, tamanio);
         return nPalabra;
     }
-
     public string UnirPalabras(string palabra1, string palabra2)
     {
         string nuevaPalabra="";
@@ -313,7 +310,4 @@ public class pruebas : MonoBehaviour
 
         return nuevaPalabra;
     }
-
-
-
 } 
