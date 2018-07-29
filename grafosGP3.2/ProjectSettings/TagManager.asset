@@ -9,6 +9,11 @@ TagManager:
   - destino
   - origen
   - esferas
+  - B0
+  - B1
+  - B2
+  - B3
+  - B4
   layers:
   - Default
   - TransparentFX

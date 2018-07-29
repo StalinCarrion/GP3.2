@@ -69,7 +69,7 @@ public class pruebas : MonoBehaviour
     //public int i;
     string obtener="";
     Coroutine cH;
-    public GameObject input;
+    //public GameObject input;
     string Input
     {
         get { return inputText.text; }

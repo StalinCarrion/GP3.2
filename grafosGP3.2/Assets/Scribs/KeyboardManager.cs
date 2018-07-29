@@ -23,6 +23,7 @@ namespace VRKeyboard.Utils {
         [Header("UI Elements")]
         public Text inputText;
         public GameObject prueba;
+        public ObtenerPredicado obtenerPredicado;
         //public GameObject prueba2;
         int opcion =0 ;
         
@@ -90,6 +91,8 @@ namespace VRKeyboard.Utils {
             //    //Debug.Log("Que se guarda: " + words);
             //}
             prueba.GetComponent<pruebas>().InitializeH();
+            StartCoroutine(obtenerPredicado.LecturaDatos());
+
             ////esferaEnvolvente.GetComponent<Renderer>().enabled = false;
             
         }

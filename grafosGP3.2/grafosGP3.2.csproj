@@ -401,11 +401,14 @@
     <Compile Include="Assets\Oculus\VR\Scripts\Util\OVRWaitCursor.cs" />
     <Compile Include="Assets\Scribs\ImportarPaises.cs" />
     <Compile Include="Assets\Scribs\KeyboardManager.cs" />
+    <Compile Include="Assets\Scribs\MostrarTexto.cs" />
     <Compile Include="Assets\Scribs\Nombres.cs" />
+    <Compile Include="Assets\Scribs\ObtenerPredicado.cs" />
     <Compile Include="Assets\Scribs\obtenerTextoTXT.cs" />
+    <Compile Include="Assets\Scribs\Predicados.cs" />
     <Compile Include="Assets\Scribs\pruebas.cs" />
+    <Compile Include="Assets\Scribs\PuenteDatos.cs" />
     <Compile Include="Assets\Scribs\QR.cs" />
-    <Compile Include="Assets\Scribs\texto.cs" />
     <Compile Include="Assets\VRKeyboard\Scripts\GazeRaycaster.cs" />
   </ItemGroup>
   <ItemGroup>
