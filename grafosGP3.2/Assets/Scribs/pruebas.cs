@@ -10,13 +10,9 @@ using System.Globalization;
 public class pruebas : MonoBehaviour
 {
     ////variable para obtener Data.txt
-    //public Text word, prefix;
-    string filePath = "Scribs/pruebas";
-    //public string dataSearch;
-    //private int count = 1; 
+    string filePath = "Scribs/Links";
     private Dictionary<string, List<string>> palabraContenedor = new Dictionary<string, List<string>>();   
     ////fin
-    //string testPalabra ="";
     //Leo el documento .txt
     public void FileDataReader()
     {
@@ -24,7 +20,8 @@ public class pruebas : MonoBehaviour
         string applicationPath = string.Format("{0}/{1}.txt", Application.dataPath, filePath.Trim());
         string[] stringData = File.ReadAllLines(applicationPath);
         //string[] stringData2 = File.ReadAllLines(applicationPath);
-
+        List<string> contenidoValor = new List<string>();
+        Debug.Log("tamaño del string "+stringData.Length);
         for (int i = 1; i < stringData.Length; i++)
         {
             if (palabraContenedor.ContainsKey(stringData[i].Split(separator: new char[] { ';' })[0]))
@@ -34,7 +31,7 @@ public class pruebas : MonoBehaviour
             }
             else
             {
-                List<string> contenidoValor= new List<string>();
+                
                 contenidoValor.Add(stringData[i].Split(separator: new char[] { ';' })[1]);
                 palabraContenedor.Add(stringData[i].Split(separator: new char[] { ';' })[0],contenidoValor);
 
@@ -119,12 +116,17 @@ public class pruebas : MonoBehaviour
         //La primera va a ser mayuscula
         string resul = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(a);
         Debug.Log("LO QUE SE OBTIENE DEL INPUT "+ resul);
-        int nEsferas = 5;
         //link de la consulta donde se sustraen los datos
-        WWW www = new WWW("http://es-la.dbpedia.org/sparql?default-graph-uri" +
-            "=&query=select+%3Chttp%3A%2F%2Fes-la.dbpedia.org%2Fresource%2F"+ resul + "%" +
-            "3E+%3Fp+%3Fo+where+%7B%3Chttp%3A%2F%2Fes-la.dbpedia.org%2Fresource%2F"+ resul + "%3E" +
-            "+%3Fp+%3Fo%7D+LIMIT+" + 6 + "&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on");
+        WWW www = new WWW("https://dbpedia.org/sparql?default-graph" +
+            "-uri=http%3A%2F%2Fdbpedia.org&query=CONSTRUCT+%0D%0A%7B%3FuriPais+" +
+            "%3Ftype+%3Fclass+.+%0D%0A%3FuriPais+%3Fetiqueta+%3FnombrePais+.+%7" +
+            "D%0D%0AWHERE%7B%0D%0Avalues+%3Ftypev%7Brdf%3Atype%7D%0D%0Avalues" +
+            "+%3Fetiquetav%7Brdfs%3Alabel%7D%0D%0Avalues+%3Fclass+%7Bdbo%3ACountry" +
+            "%7D%0D%0A%3FuriPais+%3Ftype+%3Fclass.%0D%0A%3FuriPais+%3Fetiqueta+%3" +
+            "FnombrePais.%0D%0A%3FuriPais+%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2" +
+            "Fowl%23sameAs%3E+%3Fo.%0D%0AFILTER+%28%3FnombrePais+%3D+%22"+resul+"%22%" +
+            "40en%29%0D%0A%7D&format=application%2Fsparql-results%2Bjson&CXML" +
+            "_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on&run=+Run+Query+");
         //espera cuando se carge los datos
         yield return www;
         //para presentar en consola
@@ -136,7 +138,7 @@ public class pruebas : MonoBehaviour
         string strObjeto;
         string strPredicado;
         string strSujeto;
-        int num = 33;
+        int num = 28;
         //se declaran las palabras que se van a mostrar en el entorno
         string palabraSujeto1;
         string palabraSujeto2;
@@ -148,15 +150,16 @@ public class pruebas : MonoBehaviour
         string nuevoPredicado;
         string nuevoObjeto;
 
-        for (int i = 0; i <= nEsferas; i++)
+        for (int i = 0; i < 3; i++)
         {
-            GameObject textGo = new GameObject("Objeto");
-            GameObject textSujeto = new GameObject("Sujeto");
+            GameObject textGo = new GameObject("ObjetoSTALIN");
+            GameObject textSujeto = new GameObject("SujetoSTALIN");
+            GameObject textPredicado = new GameObject("PredicadoSTALI");
             //se crear una variable de Nombre
             Nombres nom = new Nombres();
             //se ingresa a cada variable el dato que se sustrae
-            nom.Sujeto = data["results"]["bindings"][i]["callret-0"]["value"].ToString();
-            nom.TypeSujeto = data["results"]["bindings"][i]["callret-0"]["type"].ToString();
+            nom.Sujeto = data["results"]["bindings"][i]["s"]["value"].ToString();
+            nom.TypeSujeto = data["results"]["bindings"][i]["s"]["type"].ToString();
             nom.Predicado = data["results"]["bindings"][i]["p"]["value"].ToString();
             nom.TypePredicado = data["results"]["bindings"][i]["p"]["type"].ToString();
             nom.Objeto = data["results"]["bindings"][i]["o"]["value"].ToString();
@@ -169,30 +172,30 @@ public class pruebas : MonoBehaviour
             strSujeto = nom.Sujeto;
             strPredicado = nom.Predicado;
             //texbox1.text = ("Posicion del Objeto: " + i + " nombre objeto: " + strObjeto);
-            if (nom.Sujeto != " " && nom.TypeSujeto != " " && nom.Objeto != " " )
+            if (nom.Sujeto != " " && nom.TypeSujeto != " " && nom.Objeto != " ")
             {
                 //se crea la esfera sujeto
                 origin = Instantiate(sphere, vectorSujeto, Quaternion.identity);
                 origin.GetComponent<MeshRenderer>().material = MaSujeto;
                 //origin.name = "origen"+i;
                 origin.tag = "esferas";
-                origin.transform.localScale= new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
+                origin.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
                 var traza = origin.AddComponent<LineRenderer>();
                 traza.startWidth = traza.endWidth = 0.04f;
                 traza.useWorldSpace = true;
                 traza.positionCount = 2;
-                
+
                 //textSujeto.tag = "";
-                if (nom.TypeObjeto=="uri")
+                if (nom.TypeObjeto == "uri")
                 {
                     destino = Instantiate(sphere, new Vector3(Random.Range(-37.500f, -40.500f), Random.Range(32.119f, 31.062f), -71.213f), Quaternion.identity);
-                    destino.GetComponent<MeshRenderer>().material = MaObjeto;                 
+                    destino.GetComponent<MeshRenderer>().material = MaObjeto;
                     destino.tag = "esferas";
                     destino.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
 
-                    palabraObjeto1 = ObtenerPrimeraPalabra(strObjeto, 18);
+                    palabraObjeto1 = ObtenerPrimeraPalabra(strObjeto, 28);
                     Debug.Log("Primera palabra Objeto " + palabraObjeto1);
-                    palabraObjeto2 = ObtenerSegundaPalabra(strObjeto, 18);
+                    palabraObjeto2 = ObtenerSegundaPalabra(strObjeto, 28);
                     Debug.Log("Segunda palabra Objeto " + palabraObjeto2);
 
                 }
@@ -211,8 +214,6 @@ public class pruebas : MonoBehaviour
 
                 traza.SetPosition(0, vectorSujeto);
 
-                //traza.startWidth = 0.06f;
-
                 traza.SetPosition(1, destino.transform.position);
                 //traza.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
                 traza.material = MaPredicado;
@@ -222,21 +223,23 @@ public class pruebas : MonoBehaviour
                 textGo.transform.position = destino.transform.position;
                 //Para poner el texto de las esferas de objeto
                 textSujeto.transform.position = origin.transform.position;
-                
+                textPredicado.transform.position = traza.GetPosition(1);
 
+                TextMesh textMeshPredicado = textPredicado.AddComponent<TextMesh>();
                 TextMesh textMesh = textGo.AddComponent<TextMesh>();
                 TextMesh textMeshSujeto = textSujeto.AddComponent<TextMesh>();
+
                 //se optiene la nueva palabra
 
-                palabraSujeto1 = ObtenerPrimeraPalabra(strSujeto,num);
+                palabraSujeto1 = ObtenerPrimeraPalabra(strSujeto, num);
                 Debug.Log("Primera palabra Sujeto " + palabraSujeto1);
-                palabraSujeto2 = ObtenerSegundaPalabra(strSujeto,num);
+                palabraSujeto2 = ObtenerSegundaPalabra(strSujeto, num);
                 Debug.Log("Segunda palabra Sujeto " + palabraSujeto2);
-                palabraPredicado1 = ObtenerPrimeraPalabra(strPredicado,num);
+                palabraPredicado1 = ObtenerPrimeraPalabra(strPredicado, num);
                 Debug.Log("Primera palabra predicado " + palabraPredicado1);
-                palabraPredicado2 = ObtenerSegundaPalabra(strPredicado,num);
+                palabraPredicado2 = ObtenerSegundaPalabra(strPredicado, num);
                 Debug.Log("Segunda palabra Predicado " + palabraPredicado2);
-                
+
 
 
                 nuevoSujeto = UnirPalabras(palabraSujeto1, palabraSujeto2);
@@ -248,7 +251,8 @@ public class pruebas : MonoBehaviour
                 //-39.13  31.5  -72.4
                 //aqui cambio para comprobar si se envia el nuevo nombre
                 textMesh.text = nuevoObjeto; //strObjeto;
-                textMeshSujeto.text = nuevoSujeto; //strSujeto;
+                textMeshSujeto.text = resul; //strSujeto;
+                //textMeshPredicado.text = nuevoPredicado;
                 //muestra el texto obtenido de la consulta
                 //textMesh.text = strObjeto;
                 //textMeshSujeto.text = strSujeto;
@@ -256,12 +260,15 @@ public class pruebas : MonoBehaviour
                 //textGo.Color = new Color(1, 0, 1, 0.5f); //violeta transparente al 50%   100%, 64.7%, 0%, 1
                 textMesh.color = new Color(0, 255, 0, 1);
                 textMeshSujeto.color = new Color(100, 64.7f, 0, 1);
+                textMeshPredicado.color = new Color(1, 0, 0, 1);
                 //los tag sirven para eliminar el texto cuando le de al boton enter
                 textGo.tag = "esferas";
                 textSujeto.tag = "esferas";
+                textPredicado.tag = "esferas";
 
                 textGo.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
                 textSujeto.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
+                textPredicado.transform.localScale = new Vector3(0.1395633f, 0.1395634f, 0.1395634f);
             }
         }
 

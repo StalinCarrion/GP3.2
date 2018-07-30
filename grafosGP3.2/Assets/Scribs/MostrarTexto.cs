@@ -13,6 +13,6 @@ public class MostrarTexto : MonoBehaviour {
         palabras.text = "CONSTRUCT \n{?uriPais ?type ?class . \n?uriPais ?etiqueta ?nombrePais . }" +
             "\nWHERE{ \nvalues ?typev{rdf:type} \nvalues ?etiquetav{rdfs:label} \nvalues ?class {dbo:Country}" +
             "\n?uriPais ?type ?class. \n?uriPais ?etiqueta ?nombrePais. \n?uriPais <<color=#FF0000>" + pal1 + "</color>> <color=#800080>?o</color>." +
-            "\nFILTER (?nombrePais = \"<color=#00FF00>" + pal2 + "</color>\"@en) \n}";
+            "\nFILTER (?nombrePais = \"<color=#DCFE00>" + pal2 + "</color>\"@en) \n}";
     }
 }

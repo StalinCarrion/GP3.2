@@ -1,0 +1,7 @@
+palabra;prefijo
+http://dbpedia.org/resource/;resource
+http://www.w3.org/1999/02/22;a
+http://dbpedia.org/resource/;resource
+http://xmlns.com/foaf/0.1/na;na
+http://www.w3.org/2000/01/rd;rd
+http://dbpedia.org/ontology/;ontology

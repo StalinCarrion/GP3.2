@@ -450,7 +450,7 @@
     <None Include="Assets\Oculus\VR\Shaders\Unlit Crosshair.shader" />
     <None Include="Assets\Scribs\Data.txt" />
     <None Include="Assets\Scribs\DataPrueba.txt" />
-    <None Include="Assets\Scribs\pruebas.txt" />
+    <None Include="Assets\Scribs\Links.txt" />
     <None Include="Assets\VRKeyboard\README.txt" />
     <None Include="Assets\_Barking_Dog\Readme_Please.txt" />
     <None Include="Assets\esferasGiratorias\3D Free Modular Kit\e91a7a1051d6c9dfa8b44455c530f0dc-fda1c3e21b85de6548791837860b1fc425206cd6\HologramShader.shader" />

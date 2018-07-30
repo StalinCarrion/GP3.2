@@ -82,19 +82,20 @@ namespace VRKeyboard.Utils {
         public void Enter()
         {
             //PAra el GEarVR
-            //OVRInput.Update();
-            //if (OVRInput.Get(OVRInput.Button.One))
-            //{
-            //    prueba.GetComponent<pruebas>().InitializeH();
-            //    esferaEnvolvente.GetComponent<Renderer>().enabled = false;
-            //    //    words.Add(inputText.text);
-            //    //Debug.Log("Que se guarda: " + words);
-            //}
-            prueba.GetComponent<pruebas>().InitializeH();
-            StartCoroutine(obtenerPredicado.LecturaDatos());
+            OVRInput.Update();
+            if (OVRInput.Get(OVRInput.Button.One))
+            {
+                prueba.GetComponent<pruebas>().InitializeH();
+                StartCoroutine(obtenerPredicado.LecturaDatos());
+                esferaEnvolvente.GetComponent<Renderer>().enabled = false;
+                //    words.Add(inputText.text);
+                //Debug.Log("Que se guarda: " + words);
+            }
+            //prueba.GetComponent<pruebas>().InitializeH();
+            //StartCoroutine(obtenerPredicado.LecturaDatos());
 
             ////esferaEnvolvente.GetComponent<Renderer>().enabled = false;
-            
+
         }
 
 

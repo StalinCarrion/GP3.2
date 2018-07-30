@@ -3523,6 +3523,7 @@ GameObject:
   - component: {fileID: 380413869}
   - component: {fileID: 380413870}
   - component: {fileID: 380413871}
+  - component: {fileID: 380413873}
   m_Layer: 0
   m_Name: OVRCameraRig
   m_TagString: Untagged
@@ -3536,14 +3537,14 @@ Transform:
   m_PrefabParentObject: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 380413865}
-  m_LocalRotation: {x: 0.0074139447, y: 0.031409867, z: -0.00023299237, w: 0.99947906}
-  m_LocalPosition: {x: -39.15, y: 31.5, z: -72.32}
+  m_LocalRotation: {x: 0.0074171983, y: -0.010471859, z: 0.000077678254, w: 0.9999177}
+  m_LocalPosition: {x: -39.15, y: 31.8, z: -79.9}
   m_LocalScale: {x: 0.33486718, y: 0.33486694, z: 0.33486694}
   m_Children:
   - {fileID: 735494724}
   m_Father: {fileID: 0}
   m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0.85, y: 3.6, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.85, y: 718.8, z: 0}
 --- !u!114 &380413867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3755,6 +3756,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &380413873
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 380413865}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8304c6d02a625a54b8de33ffb402053a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &380491187
 GameObject:
   m_ObjectHideFlags: 0
