@@ -124,7 +124,7 @@ public class pruebas : MonoBehaviour
             "+%3Fetiquetav%7Brdfs%3Alabel%7D%0D%0Avalues+%3Fclass+%7Bdbo%3ACountry" +
             "%7D%0D%0A%3FuriPais+%3Ftype+%3Fclass.%0D%0A%3FuriPais+%3Fetiqueta+%3" +
             "FnombrePais.%0D%0A%3FuriPais+%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2" +
-            "Fowl%23sameAs%3E+%3Fo.%0D%0AFILTER+%28%3FnombrePais+%3D+%22"+resul+"%22%" +
+            "Fowl%23sameAs%3E+%3Fo.%0D%0AFILTER+%28%3FnombrePais+%3D+%22" + resul + "%22%" +
             "40en%29%0D%0A%7D&format=application%2Fsparql-results%2Bjson&CXML" +
             "_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on&run=+Run+Query+");
         //espera cuando se carge los datos

@@ -1,32 +1,29 @@
-﻿/***
- * Author: Yunhan Li 
- * Any issue please contact yunhn.lee@gmail.com
- ***/
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-
-namespace VRKeyboard.Utils {
-    public class KeyboardManager : MonoBehaviour {
+namespace VRKeyboard.Utils
+{
+    public class KeyboardManager : MonoBehaviour
+    {
         //PAra desaparecer la esfera
         public GameObject esferaEnvolvente;
-        
-        
+
+
         #region Public Variables
         [Header("User defined")]
         [Tooltip("If the character is uppercase at the initialization")]
         public bool isUppercase = false;
         public int maxInputLength;
-        
+
         [Header("UI Elements")]
         public Text inputText;
         public GameObject prueba;
         public ObtenerPredicado obtenerPredicado;
+        public pruebas pru;
         //public GameObject prueba2;
-        int opcion =0 ;
-        
+        int opcion = 0;
+
         [Header("Essentials")]
         public Transform characters;
         #endregion
@@ -44,9 +41,11 @@ namespace VRKeyboard.Utils {
         #endregion
 
         #region Monobehaviour Callbacks
-        private void Awake() {
+        private void Awake()
+        {
             //Debug.Log("Que hay aqui: "+Input);
-            for (int i = 0; i < characters.childCount; i++) {
+            for (int i = 0; i < characters.childCount; i++)
+            {
                 GameObject key = characters.GetChild(i).gameObject;
                 Text _text = key.GetComponentInChildren<Text>();
                 keysDictionary.Add(key, _text);
@@ -62,7 +61,8 @@ namespace VRKeyboard.Utils {
         #endregion
 
         #region Public Methods
-        public void Backspace() {
+        public void Backspace()
+        {
             OVRInput.Update();
             if (OVRInput.Get(OVRInput.Button.One))
             {
@@ -76,38 +76,45 @@ namespace VRKeyboard.Utils {
                 }
             }
 
-            
+
         }
-        
+        public Material skyone;
+
         public void Enter()
         {
             //PAra el GEarVR
             OVRInput.Update();
             if (OVRInput.Get(OVRInput.Button.One))
             {
+
+                //prueba.GetComponent<pruebas>().InitializeH();
+                //pru.InitializeH();
                 prueba.GetComponent<pruebas>().InitializeH();
+                RenderSettings.skybox = skyone;
                 StartCoroutine(obtenerPredicado.LecturaDatos());
                 esferaEnvolvente.GetComponent<Renderer>().enabled = false;
-                //    words.Add(inputText.text);
-                //Debug.Log("Que se guarda: " + words);
             }
             //prueba.GetComponent<pruebas>().InitializeH();
-            //StartCoroutine(obtenerPredicado.LecturaDatos());
-
-            ////esferaEnvolvente.GetComponent<Renderer>().enabled = false;
+            //pru.InitializeH();
+            prueba.GetComponent<pruebas>().InitializeH();
+            RenderSettings.skybox = skyone;
+            StartCoroutine(obtenerPredicado.LecturaDatos());
+            esferaEnvolvente.GetComponent<Renderer>().enabled = false;
 
         }
 
 
-        public void Clear() {
+        public void Clear()
+        {
             OVRInput.Update();
             if (OVRInput.Get(OVRInput.Button.One))
             {
                 Input = "";
-            }          
+            }
         }
 
-        public void CapsLock() {
+        public void CapsLock()
+        {
             OVRInput.Update();
             if (OVRInput.Get(OVRInput.Button.One))
             {
@@ -135,12 +142,13 @@ namespace VRKeyboard.Utils {
                     }
                 }
                 capslockFlag = !capslockFlag;
-            }            
+            }
         }
         #endregion
 
         #region Private Methods
-        public void GenerateInput(string s) {
+        public void GenerateInput(string s)
+        {
 
             OVRInput.Update();
 
@@ -154,36 +162,20 @@ namespace VRKeyboard.Utils {
             }
         }
 
-        private string ToLowerCase(string s) {
-            
-                return s.ToLower();
-            
-            
+        private string ToLowerCase(string s)
+        {
+
+            return s.ToLower();
+
+
         }
 
-        private string ToUpperCase(string s) {
-            
-                return s.ToUpper();
+        private string ToUpperCase(string s)
+        {
+
+            return s.ToUpper();
 
         }
         #endregion
-        // ObtenerText
-
-        //private void OnGUI()
-        //{
-        //    string oldString = myText;
-        //    //myText = GUI.TextField(newRect(10, 10, 200, 20), myText);
-        //    myText = GUI.TextField(new Rect(10, 10, 200, 20), myText);
-        //    if (!string.IsNullOrEmpty(myText) && myText.Length > oldString.Length)
-        //    {
-        //        List<string> found = words.FindAll(w => w.StartsWith(myText));
-        //        if (found.Count > 0)
-        //        {
-        //            //myText = found[0];
-        //            textAutocomplete.text = found[0];
-        //            print(found.Count);
-        //        }
-        //    }
-        //}
     }
 }
